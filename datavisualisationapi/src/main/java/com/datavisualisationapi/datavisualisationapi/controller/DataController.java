@@ -88,22 +88,21 @@ public class DataController {
 //
 //				}
 //				
-		//http://localhost:8088/api/selected?state=Bihar&type=PKDL&startDate=2023-05-03&endDate=2023-05-19&startAge=6&endAge=12
+		//http://localhost:8088/api/selected?state=Bihar&district=Begusarai&type=PKDL&startDate=2023-05-03&endDate=2023-05-19&startAge=6&endAge=12
 
-				@GetMapping("/selected")
-				public ResponseEntity<List<DataVisualisation>> getDataVisualisationByStateAndTypeAndDateAndAge(@RequestParam String state,
-						 
-						@RequestParam String type,
-						@RequestParam  Date startDate,
-						@RequestParam Date endDate,
-						@RequestParam  int startAge,
-						@RequestParam int endAge) {
-					List<DataVisualisation> alldata = new ArrayList<DataVisualisation>();
-					datarepo.findByStateAndTypeAndDateBetweenAndAgeBetween(state, type, startDate, endDate, startAge, endAge ).forEach(alldata::add);
+		@GetMapping("/selected")
+		public ResponseEntity<List<DataVisualisation>> getDataVisualisationByStateAndDistrictAndTypeAndDateAndAge(@RequestParam String state,
+				@RequestParam String district,
+				@RequestParam String type,
+				@RequestParam  Date startDate,
+				@RequestParam Date endDate,
+				@RequestParam  int startAge,
+				@RequestParam int endAge) {
+			List<DataVisualisation> alldata = new ArrayList<DataVisualisation>();
+			datarepo.findByStateAndDistrictAndTypeAndDateBetweenAndAgeBetween(state,district, type, startDate, endDate, startAge, endAge ).forEach(alldata::add);
 
-					return new ResponseEntity<List<DataVisualisation>>(alldata, HttpStatus.OK);
+			return new ResponseEntity<List<DataVisualisation>>(alldata, HttpStatus.OK);
 
-				}
-						
+		}		
 
 }

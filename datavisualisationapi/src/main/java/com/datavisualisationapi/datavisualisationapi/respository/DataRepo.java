@@ -24,6 +24,6 @@ public interface  DataRepo extends JpaRepository<DataVisualisation,Integer>{
 
 		List<DataVisualisation> findByAgeBetween(int startAge, int endAge);
 
-		List<DataVisualisation> findByStateAndTypeAndDateBetweenAndAgeBetween(String state,
+		List<DataVisualisation> findByStateAndDistrictAndTypeAndDateBetweenAndAgeBetween(String state,String district,
 				String type, Date startDate, Date endDate, int startAge, int endAge);
 }
